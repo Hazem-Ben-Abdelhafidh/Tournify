@@ -1,9 +1,17 @@
 import { Outlet } from 'react-router-dom'
+import Header from './Header/Header'
 
 
 const Layout = () => {
     return (
-        <Outlet />
+        <div className="font-primary text-white">
+
+            <Header />
+            <main className='  bg-neutral-700 h-screen'>
+                <Outlet />
+            </main>
+
+        </div>
     )
 }
 
