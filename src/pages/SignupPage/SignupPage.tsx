@@ -1,15 +1,43 @@
+import React, { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import Logo from "../../Components/Logo"
+import { useSignupMutation } from "../../features/Users/UsersSlice"
+import Modal from "../../utils/Modal/Modal"
+import Spinner from "../../utils/Spinner/Spinner"
 
 const SignupPage = () => {
+    const navigate = useNavigate();
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [signup, { isLoading, isSuccess, data }] = useSignupMutation()
+    const register = async (e: React.FormEvent) => {
+        try {
+            e.preventDefault();
+            await signup({ name, email, password }).unwrap()
+            navigate('/')
+        }
+        catch {
+            console.log("problem...")
+        }
+    }
+    if (isSuccess) {
+        localStorage.setItem("accessToken", data!.accessToken)
+    }
     return (
         <section className="form">
             <Logo />
-            <form className=" bg-neutral-700 shadow-2xl w-4/5 h-72 flex flex-col justify-around items-center p-3 md:w-1/3 lg:w-1/2">
-                <h1 className="font-bold mb-2 text-4xl">Sign up!</h1>
-                <input className="input" type="text" placeholder="Username" />
-                <input className="input" type="email" placeholder="Email" />
-                <input type="password" className="input" placeholder="password" />
-                <button type="submit" className=" bg-orange-600 shadow-xl p-2 hover:bg-orange-700 transition-colors font-semibold  w-full ">Login</button>
+            <form onSubmit={register} className=" bg-neutral-700 relative shadow-2xl w-4/5 h-72 flex flex-col justify-around items-center p-3 md:w-1/3 lg:w-1/2">
+
+                {isLoading ? <Modal><Spinner /></Modal> : null}
+                <h1 className="font-bold mb-2 text-4xl">Sign up &#x1F680;</h1>
+                <input className="input" value={name} onChange={(e) => setName(e.target.value)} type="text" placeholder="Username" />
+                <input className="input" value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Email" />
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input" placeholder="password" />
+                <Link to="/login" className="hover:text-orange-600 transition duration-300">
+                    Already have an account? Login
+                </Link>
+                <button type="submit" className=" bg-orange-600 shadow-xl p-2 hover:bg-orange-700 transition-colors font-semibold  w-full ">Signup</button>
             </form>
         </section>
     )
