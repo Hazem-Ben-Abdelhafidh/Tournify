@@ -1,18 +1,18 @@
 .loader,
 .loader:after {
   border-radius: 50%;
-  width: 10em;
-  height: 10em;
+  width: 20em;
+  height: 20em;
 }
 .loader {
   margin: 0 auto;
-  font-size: 2px;
+  font-size: 4px;
   position: relative;
   text-indent: -9999em;
-  border-top: 1.1em solid #ea580c;
-  border-right: 1.1em solid #ea580c;
-  border-bottom: 1.1em solid #ea580c;
-  border-left: 1.1em solid #ffffff;
+  border-top: 1.3em solid #ffffff;
+  border-right: 1.3em solid #ffffff;
+  border-bottom: 1.3em solid #ffffff;
+  border-left: 1.3em solid #ea580c;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
   transform: translateZ(0);
