@@ -21,7 +21,7 @@ const LoginPage = () => {
         }
     }
     if (isSuccess) {
-        localStorage.setItem("accessToken", data?.accessToken!)
+        sessionStorage.setItem("accessToken", data?.accessToken!)
     }
     return (
         <section className="form">
@@ -38,4 +38,4 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage
+export default LoginPage 

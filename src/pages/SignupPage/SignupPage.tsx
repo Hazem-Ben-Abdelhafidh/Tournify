@@ -22,12 +22,12 @@ const SignupPage = () => {
         }
     }
     if (isSuccess) {
-        localStorage.setItem("accessToken", data!.accessToken)
+        sessionStorage.setItem("accessToken", data!.accessToken)
     }
     return (
         <section className="form">
             <Logo />
-            <form onSubmit={register} className=" bg-neutral-700 relative shadow-2xl w-4/5 h-72 flex flex-col justify-around items-center p-3 md:w-1/3 lg:w-1/2">
+            <form onSubmit={register} className=" bg-neutral-700 relative shadow-2xl w-4/5 h-72 flex flex-col justify-around items-center p-4 md:w-1/3 lg:w-1/2">
 
                 {isLoading ? <Modal><Spinner /></Modal> : null}
                 <h1 className="font-bold mb-2 text-4xl">Sign up &#x1F680;</h1>
