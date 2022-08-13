@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .input {
-  @apply p-2 bg-neutral-900 shadow-sm w-full focus:ring-orange-600 focus:ring-2 placeholder:text-white transition duration-500 outline-none;
+  @apply p-2 mb-2 bg-neutral-900 shadow-sm w-full focus:ring-orange-600 focus:ring-2 placeholder:text-white transition duration-500 outline-none;
 }
 .form {
   @apply font-normal flex flex-col justify-center p-3 shadow-xl text-white items-center bg-neutral-900 h-screen;
