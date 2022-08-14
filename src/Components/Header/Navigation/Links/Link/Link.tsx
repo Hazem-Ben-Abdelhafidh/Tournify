@@ -10,7 +10,7 @@ type Props = {
 const Link = (props: Props) => {
     return (
         <NavLink to={props.path} className="text-white group  h-full w-full flex flex-col justify-center items-center ">
-            <span className="group-hover:text-orange-600 transition-colors">
+            <span className="group-hover:text-orange-600 transition-colors whitespace-nowrap">
                 {props.icon}
             </span>
             <span className=" text-xs hidden md:inline  group-hover:text-orange-600 transition-colors">{props.text}</span>
