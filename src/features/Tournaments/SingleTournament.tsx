@@ -1,4 +1,5 @@
 import { format, formatDistance } from "date-fns";
+import { Data } from "../Users/types";
 type Props = {
     name: string,
     game: string,
@@ -6,13 +7,14 @@ type Props = {
     cost: number;
     createdAt: Date;
     startTime: Date;
+    owner: Data;
 }
 
 const SingleTournament = (props: Props) => {
     return (
         <div className="bg-neutral-500  font-normal shadow-2xl w-4/5 md:w-2/3 my-3 p-3 grid grid-rows-3 grid-cols-3" >
             <div className="flex flex-col col-span-3">
-                <span>User</span>
+                <span>{props.owner.name}</span>
                 <span className="text-xs"> {formatDistance(new Date(), new Date(props.createdAt))} ago</span>
             </div>
             <h3 className=" col-span-3 font-bold text-xl  flex justify-center items-center">{props.name}</h3>
