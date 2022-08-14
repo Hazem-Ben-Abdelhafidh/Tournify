@@ -7,7 +7,7 @@ const Layout = () => {
         <div className="font-primary text-white">
 
             <Header />
-            <main className='  bg-neutral-700 h-screen'>
+            <main className='  bg-neutral-700 min-h-screen '>
                 <Outlet />
             </main>
 
