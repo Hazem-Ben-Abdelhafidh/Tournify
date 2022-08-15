@@ -6,7 +6,6 @@ import { Tournament } from "./types";
 
 const TournamentsList = () => {
     const { data, isLoading, isError, error } = useGetTournamentsQuery();
-    console.log(data);
     if (isLoading) {
         return <Spinner />
     }
