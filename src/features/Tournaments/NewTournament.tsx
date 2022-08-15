@@ -10,7 +10,7 @@ import Spinner from "../../utils/Spinner/Spinner";
 const formSchema = z.object({
     name: z.string(),
     game: z.string(),
-    numberOfTeams: z.string({ invalid_type_error: "Please provide a number" }).transform(Number),
+    numberOfTeams: z.string({ invalid_type_error: "Please provide a number" }).transform(Number).refine(val => val % 2 === 0, { message: "The number must be even" }),
     cost: z.string({ invalid_type_error: "Please provide a number" }).transform(Number)
 });
 type FormSchemaType = z.infer<typeof formSchema>
