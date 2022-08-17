@@ -10,3 +10,7 @@ export interface User {
   data: Data;
   accessToken: string;
 }
+
+export interface OneUser {
+  user: Pick<Data, "id" | "name">;
+}

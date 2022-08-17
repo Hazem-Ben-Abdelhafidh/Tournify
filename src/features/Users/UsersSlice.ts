@@ -1,5 +1,5 @@
 import { apiSlice } from "../api/apiSlice";
-import { User, Data } from "./types";
+import { User, Data, OneUser } from "./types";
 
 export const extendedApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -17,7 +17,14 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
         body: body,
       }),
     }),
+    getUser: builder.query<OneUser, string>({
+      query: (id) => ({
+        url: `users/getUser/${id}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useSignupMutation } = extendedApiSlice;
+export const { useLoginMutation, useGetUserQuery, useSignupMutation } =
+  extendedApiSlice;
