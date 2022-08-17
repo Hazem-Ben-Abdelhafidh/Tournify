@@ -11,13 +11,14 @@ type Props = {
     createdAt: Date;
     startTime: Date;
     owner: Data;
+    ownerId: string
 }
 
 const SingleTournament = (props: Props) => {
     return (
         <div className="bg-neutral-500  font-normal shadow-2xl w-4/5 md:w-2/3 my-3 p-3 grid gap-1 grid-rows-3 grid-cols-3" >
             <div className="flex flex-col col-span-3">
-                <span>{props.owner.name}</span>
+                <Link to={`/users/${props.ownerId}`}>{props.owner?.name}</Link>
                 <span className="text-xs"> {formatDistance(new Date(), new Date(props.createdAt))} ago</span>
             </div>
             <h3 className=" col-span-3 font-bold text-xl  flex justify-center items-center">{props.name}</h3>

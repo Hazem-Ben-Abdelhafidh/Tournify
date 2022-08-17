@@ -4,6 +4,7 @@ import SearchResults from "./Components/SearchResults/SearchResults"
 import NewTournament from "./features/Tournaments/NewTournament"
 import TournamentDetails from "./features/Tournaments/TournamentDetails"
 import TournamentsList from "./features/Tournaments/TournamentsList"
+import UserProfile from "./features/Users/UserProfile"
 import LoginPage from "./pages/LoginPage/LoginPage"
 import NotFoundPage from "./pages/NotFoundPage"
 import SignupPage from "./pages/SignupPage/SignupPage"
@@ -20,6 +21,7 @@ function App() {
           <Route path="addNewTournament" element={<NewTournament />} />
           <Route path="/results" element={<SearchResults />} />
           <Route path="/tournaments/:id" element={<TournamentDetails />} />
+          <Route path="/users/:id" element={<UserProfile />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Route>
