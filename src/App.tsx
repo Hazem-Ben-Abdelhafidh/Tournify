@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import Layout from "./Components/Layout"
 import SearchResults from "./Components/SearchResults/SearchResults"
 import NewTournament from "./features/Tournaments/NewTournament"
+import TournamentDetails from "./features/Tournaments/TournamentDetails"
 import TournamentsList from "./features/Tournaments/TournamentsList"
 import LoginPage from "./pages/LoginPage/LoginPage"
 import NotFoundPage from "./pages/NotFoundPage"
@@ -18,6 +19,7 @@ function App() {
           <Route index element={<TournamentsList />} />
           <Route path="addNewTournament" element={<NewTournament />} />
           <Route path="/results" element={<SearchResults />} />
+          <Route path="/tournaments/:id" element={<TournamentDetails />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Route>

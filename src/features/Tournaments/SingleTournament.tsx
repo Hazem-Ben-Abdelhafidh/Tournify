@@ -1,6 +1,9 @@
 import { format, formatDistance } from "date-fns";
+import { Link } from "react-router-dom";
 import { Data } from "../Users/types";
+import JoinButton from "./JoinButton";
 type Props = {
+    id: string
     name: string,
     game: string,
     numberOfTeams: number;
@@ -12,7 +15,7 @@ type Props = {
 
 const SingleTournament = (props: Props) => {
     return (
-        <div className="bg-neutral-500  font-normal shadow-2xl w-4/5 md:w-2/3 my-3 p-3 grid grid-rows-3 grid-cols-3" >
+        <div className="bg-neutral-500  font-normal shadow-2xl w-4/5 md:w-2/3 my-3 p-3 grid gap-1 grid-rows-3 grid-cols-3" >
             <div className="flex flex-col col-span-3">
                 <span>{props.owner.name}</span>
                 <span className="text-xs"> {formatDistance(new Date(), new Date(props.createdAt))} ago</span>
@@ -27,7 +30,8 @@ const SingleTournament = (props: Props) => {
             <span className="col col-span-3 p-3 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-1 text-orange-600" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
             </svg> Starting Date : {format(new Date(props.startTime), "dd-MM-yyyy")}</span>
-            <button className='p-2 bg-orange-600 shadow-lg hover:bg-orange-700 transition-colors col-start-3 col-end-3 justify-end'>Join</button>
+            <Link to={`/tournaments/${props.id}`} className='p-2 text-center  hover:text-orange-700 transition-colors col-start-2 col-end-3 justify-end'>See full details</Link>
+            <JoinButton tournamentId={props.id} />
         </div>
     )
 }

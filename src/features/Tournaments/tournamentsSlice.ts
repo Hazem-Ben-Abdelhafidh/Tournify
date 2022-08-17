@@ -1,6 +1,11 @@
 import { apiSlice } from "../api/apiSlice";
-import { Data } from "../Users/types";
-import { SearchResults, Tournament, tournaments } from "./types";
+import {
+  Participants,
+  SearchResults,
+  SingleTournament,
+  Tournament,
+  tournaments,
+} from "./types";
 
 export const extendedApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -23,6 +28,24 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
         body: body,
       }),
     }),
+    joinTournament: builder.mutation({
+      query: (args) => ({
+        url: `tournaments/join/${args}`,
+        method: "POST",
+      }),
+    }),
+    getTournament: builder.query<SingleTournament, string>({
+      query: (args) => ({
+        url: `tournaments/${args}`,
+        method: "GET",
+      }),
+    }),
+    getParticipants: builder.query<Participants, string>({
+      query: (args) => ({
+        url: `tournaments/participants/${args}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -30,4 +53,7 @@ export const {
   useGetTournamentsQuery,
   useSearchQuery,
   useAddNewTournamentMutation,
+  useJoinTournamentMutation,
+  useGetParticipantsQuery,
+  useGetTournamentQuery,
 } = extendedApiSlice;
