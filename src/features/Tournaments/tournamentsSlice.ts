@@ -46,6 +46,12 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    getTournamentsById: builder.query<tournaments, string>({
+      query: (id) => ({
+        url: `tournaments/users/${id}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
@@ -56,4 +62,5 @@ export const {
   useJoinTournamentMutation,
   useGetParticipantsQuery,
   useGetTournamentQuery,
+  useGetTournamentsByIdQuery,
 } = extendedApiSlice;
