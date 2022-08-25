@@ -8,7 +8,6 @@ const JoinButton = (props: Props) => {
     const submitHandler = async () => {
         await joinTournament(props.tournamentId);
     }
-    console.log(data);
     return (
         <button onClick={submitHandler} className='p-2 bg-orange-600 shadow-lg hover:bg-orange-700 transition-colors col-start-3 col-end-3 justify-end'>{isLoading ? <Spinner /> : "Join"}</button>
     )
