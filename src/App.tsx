@@ -1,6 +1,8 @@
 import { Route, Routes } from "react-router-dom"
+import { io } from "socket.io-client"
 import Layout from "./Components/Layout"
 import SearchResults from "./Components/SearchResults/SearchResults"
+import Messages from "./features/Messages/Messages"
 import NewTournament from "./features/Tournaments/NewTournament"
 import TournamentDetails from "./features/Tournaments/TournamentDetails"
 import TournamentsList from "./features/Tournaments/TournamentsList"
@@ -9,6 +11,12 @@ import LoginPage from "./pages/LoginPage/LoginPage"
 import NotFoundPage from "./pages/NotFoundPage"
 import SignupPage from "./pages/SignupPage/SignupPage"
 import RequireAuth from "./utils/RequireAuth"
+
+export const socket = io("http://localhost:5000")
+
+
+
+
 
 function App() {
   return (
@@ -22,10 +30,12 @@ function App() {
           <Route path="/results" element={<SearchResults />} />
           <Route path="/tournaments/:id" element={<TournamentDetails />} />
           <Route path="/users/:id" element={<UserProfile />} />
+          <Route path="/messages/:id" element={<Messages />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
+
   )
 }
 
