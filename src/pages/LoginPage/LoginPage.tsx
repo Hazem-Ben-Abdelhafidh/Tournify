@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"
+import { useAppDispatch } from "../../app/hooks";
 import Logo from "../../Components/Logo"
+import { setCredentials } from "../../features/Users/authSlice";
 import { useLoginMutation } from "../../features/Users/UsersSlice";
 import Modal from "../../utils/Modal/Modal";
 import Spinner from "../../utils/Spinner/Spinner";
@@ -10,6 +12,7 @@ const LoginPage = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [login, { isLoading, isSuccess, data }] = useLoginMutation()
+    const dispatch = useAppDispatch();
     const signin = async (e: React.FormEvent) => {
         try {
             e.preventDefault();
@@ -21,6 +24,8 @@ const LoginPage = () => {
         }
     }
     if (isSuccess) {
+
+        dispatch(setCredentials({ accessToken: data?.accessToken, user: data?.data }))
         sessionStorage.setItem("accessToken", data?.accessToken!)
     }
     return (
