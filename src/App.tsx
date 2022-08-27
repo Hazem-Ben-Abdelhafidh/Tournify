@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import { io } from "socket.io-client"
 import Layout from "./Components/Layout"
 import SearchResults from "./Components/SearchResults/SearchResults"
+import Conversations from "./features/Messages/Conversations/Conversations"
 import Messages from "./features/Messages/Messages"
 import NewTournament from "./features/Tournaments/NewTournament"
 import TournamentDetails from "./features/Tournaments/TournamentDetails"
@@ -30,6 +31,7 @@ function App() {
           <Route path="/results" element={<SearchResults />} />
           <Route path="/tournaments/:id" element={<TournamentDetails />} />
           <Route path="/users/:id" element={<UserProfile />} />
+          <Route path="/messages" element={<Conversations />} />
           <Route path="/messages/:id" element={<Messages />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
