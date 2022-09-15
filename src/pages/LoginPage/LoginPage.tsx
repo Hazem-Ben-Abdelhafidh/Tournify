@@ -6,7 +6,6 @@ import { setCredentials } from "../../features/Users/authSlice";
 import { useLoginMutation } from "../../features/Users/UsersSlice";
 import Modal from "../../utils/Modal/Modal";
 import Spinner from "../../utils/Spinner/Spinner";
-
 const LoginPage = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('')
@@ -24,9 +23,7 @@ const LoginPage = () => {
         }
     }
     if (isSuccess) {
-
         dispatch(setCredentials({ accessToken: data?.accessToken, user: data?.data }))
-        sessionStorage.setItem("accessToken", data?.accessToken!)
     }
     return (
         <section className="form">
